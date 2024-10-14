@@ -12,7 +12,7 @@ const signupBody = zod.object({
     password : zod.string().min(6)
 })
 
-router.post("/signup", async function(req , res) {
+router.post("/signupuser", async function(req , res) {
     const {success} = signupBody.safeParse(req.body)
 
     if(!success) {
@@ -47,5 +47,32 @@ router.post("/signup", async function(req , res) {
         user : user.name
     })
 })
+
+const signinBody = zod.object({
+    email: zod.string().email(),
+    password: zod.string().min(6),
+  })
+
+router.post("/signinuser" , async function(req , res){
+    const {success} = signinBody.safeParse(req.body)
+
+    if(!success) {
+        res.status(411).json({error : "Invalid Inputs"})
+    }
+
+    const userExist = await User.findOne({
+        email : req.body.email,
+    })
+    if(!userExist) {
+        res.status(411).json({error : "user not exist"})
+    }
+
+    const userId = userExist.id;
+    const token = jwt.sign({userId},
+        process.env.SECRET_KEY ,
+    )
+    res.status(200).json({msg :"User signed in successfully",token:token})
+ })
+
 
 module.exports = router
