@@ -58,7 +58,7 @@ const signinBody = zod.object({
 });
 
 // Signin route for admin
-router.post("/adminsignin", adminMiddleware , async function (req, res) {
+router.post("/signinadmin", adminMiddleware , async function (req, res) {
     const result = signinBody.safeParse(req.body);
 
     if (!result.success) {
@@ -80,32 +80,39 @@ router.post("/adminsignin", adminMiddleware , async function (req, res) {
 });
 
 // Route to upload courses 
-router.post("/course", adminMiddleware, async function (req, res) {
-    const { name, description, price, imageUrl } = req.body;
 
-    if (!name || !description || !price || !imageUrl) {
-        return res.status(400).json({ message: "All fields are required" });
-    }
+router.post("/course", adminMiddleware, async function(req, res) {
+    const adminId = req.userId;
 
-    try {
-        const newCourse = new Course({
-            name,
-            description,
-            price,
-            imageUrl,
-        });
+    const { title, description, imageUrl, price } = req.body;
 
-        await newCourse.save();
+   
+    const course = await Course.create({
+        title: title, 
+        description: description, 
+        imageUrl: imageUrl, 
+        price: price, 
+        creatorId: adminId
+    })
 
-        res.status(201).json({ message: "Course uploaded successfully", course: newCourse });
-    } catch (error) {
-        res.status(500).json({ message: "Server error", error: error.message });
-    }
+    res.json({
+        message: "Course created",
+        courseId: course._id
+    })
 });
 
-//to see all uploaded course
-router.post("/bulk" , async function(req , res) {
 
+router.get("/course/bulk", adminMiddleware,async function(req, res) {
+    const adminId = req.userId;
+
+    const courses = await Course.find({
+        creatorId: adminId 
+    });
+
+    res.json({
+        message: "Course updated",
+        courses
+    })
 })
 
 module.exports = router;
