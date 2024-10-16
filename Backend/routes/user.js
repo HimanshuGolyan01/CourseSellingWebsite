@@ -2,7 +2,10 @@ const express = require("express")
 const zod = require("zod")
 const mongoose = require("mongoose")
 const jwt = require('jsonwebtoken');
+const Purchases = require("../models/purchases")
 const User = require("../models/user")
+const userMiddleware = require("../Middleware/user")
+const Course = require("../models/course")
 
 const router = express.Router();
 
@@ -35,10 +38,10 @@ router.post("/signupuser", async function(req , res) {
         password : req.body.password
     })
 
-    const userID = user._id;
+    const userId = user._id;
 
     const token = jwt.sign({
-        userID
+        userId
     }, process.env.SECRET_KEY)
 
     res.status(200).json({
@@ -74,5 +77,34 @@ router.post("/signinuser" , async function(req , res){
     res.status(200).json({msg :"User signed in successfully",token:token})
  })
 
+
+
+
+ router.get("/purchases", userMiddleware, async function(req, res) {
+    const userId = req.userId; 
+
+   
+    const purchased = await Purchases.find({
+        userId,
+    });
+
+    let purchasedCourseIds = [];
+
+    
+    for (let i = 0; i < purchased.length; i++) { 
+        purchasedCourseIds.push(purchased[i].courseId); 
+    }
+
+   
+    const coursesData = await Course.find({
+        _id: { $in: purchasedCourseIds } 
+    });
+
+    
+    res.json({
+        purchased,  
+        coursesData    
+    });
+});
 
 module.exports = router
