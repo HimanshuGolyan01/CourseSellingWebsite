@@ -6,6 +6,7 @@ import Signupuser from "./Pages/Signupuser";
 import Signinuser from "./Pages/Signinuser";
 import AdminHome from "./Pages/AdminHome";
 import UserHome from "./Pages/UserHome";
+import Uploadcourse from "./Pages/Uploadcourse";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path='/signinuser' element={<Signinuser/>} />
         <Route path='/AdminHome' element={<AdminHome/>} />
         <Route path='/UserHome' element={<UserHome/>} />
+        <Route path='/Uploadcourse' element={<Uploadcourse/>} />
       </Routes>
     </Router>
   );
