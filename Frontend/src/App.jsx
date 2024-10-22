@@ -7,6 +7,7 @@ import Signinuser from "./Pages/Signinuser";
 import AdminHome from "./Pages/AdminHome";
 import UserHome from "./Pages/UserHome";
 import Uploadcourse from "./Pages/Uploadcourse";
+// import PurchaseCourse from "./PurchaseCourse"
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path='/AdminHome' element={<AdminHome/>} />
         <Route path='/UserHome' element={<UserHome/>} />
         <Route path='/Uploadcourse' element={<Uploadcourse/>} />
+        {/* <Route path='/PurchaseCourse' element={<PurchaseCourse/>} /> */}
       </Routes>
     </Router>
   );
