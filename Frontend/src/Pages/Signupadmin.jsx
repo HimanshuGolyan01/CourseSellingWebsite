@@ -23,7 +23,7 @@ const Signupadmin = () => {
             password : password
           });
           localStorage.setItem("token" , response.data.token)
-          localStorage.setItem("name",response.data.name)
+          localStorage.setItem("name",response.data.user)
 
           navigate("/AdminHome")
         } catch (error) {

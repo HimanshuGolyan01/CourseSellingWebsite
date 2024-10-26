@@ -1,7 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const userRouter = require("./routes/index"); 
+// const userRouter = require("./routes/index"); 
 const connectDB = require('./config/db')
 const rootrouter = require("./routes/index")
 
@@ -10,10 +10,10 @@ dotenv.config();
 
 app.use(cors());
 app.use(express.json());
-connectDB()
+connectDB();
 
 
-app.use("/api/v1", userRouter);
+app.use("/api/v1", rootrouter);
 
 const port = process.env.PORT;
 
