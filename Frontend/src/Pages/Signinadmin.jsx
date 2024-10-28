@@ -11,7 +11,7 @@ const Signinadmin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   async function signinhandler() {
     try {
@@ -20,9 +20,9 @@ const Signinadmin = () => {
         password : password
       });
       localStorage.setItem("token", response.data.token);
-      // navigate("/AdminHome");
+      navigate("/AdminHome");
     } catch (error) {
-      console.log("Signin error", error);
+      console.log("Signin error", error.response ? error.response.data : error.message);
     }
   }
 

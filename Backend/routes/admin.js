@@ -58,7 +58,7 @@ const signinBody = zod.object({
 });
 
 // Signin route for admin
-router.post("/signinadmin", adminMiddleware , async function (req, res) {
+router.post("/signinadmin",  async function (req, res) {
     const result = signinBody.safeParse(req.body);
 
     if (!result.success) {

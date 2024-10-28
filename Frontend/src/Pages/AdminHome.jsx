@@ -1,7 +1,10 @@
 import React from 'react';
 import UploadCard from '../Components/UploadCard';
+import Uploadcourse from './Uploadcourse';
+import { useNavigate } from 'react-router-dom';
 
 const AdminHome = () => {
+   const Navigate = useNavigate();
   return (
     <div className="flex h-screen bg-gray-100 font-rubik">
       
@@ -27,9 +30,8 @@ const AdminHome = () => {
 
         <div>
        <UploadCard
-       title={"Click To Upload Your course"}
-       description={"Upload your course details"}
-    //    onUpload={handleUploadClick}
+        title={"Click To Upload Your course"}
+        description={"Upload your course details"}
        />
         </div>
       </div>
