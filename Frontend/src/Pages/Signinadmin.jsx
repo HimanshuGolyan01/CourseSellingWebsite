@@ -20,6 +20,8 @@ const Signinadmin = () => {
         password : password
       });
       localStorage.setItem("token", response.data.token);
+      console.log(response.data);
+      
       navigate("/AdminHome");
     } catch (error) {
       console.log("Signin error", error.response ? error.response.data : error.message);
