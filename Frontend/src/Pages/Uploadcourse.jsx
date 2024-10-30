@@ -31,9 +31,9 @@ const Uploadcourse = () => {
       });
       console.log(response.data)
 
-      // if (response.status === 200) {
-      //   navigate("/dashboard");
-      // }
+      if (response.status === 200) {
+        navigate("/AdminHome");
+      }
     } catch (error) {
       console.error("Failed to upload course:", error.response ? error.response.data : error.message);
     }

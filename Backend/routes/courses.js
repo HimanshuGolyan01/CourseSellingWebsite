@@ -25,7 +25,7 @@ router.get("/purchase" ,userMiddleware, async function(req , res) {
 
 //to preview course
 
-router.get("/preview" , userMiddleware , async function( req , res) {
+router.get("/preview" , async function( req , res) {
     const courses = await course.find({});
 
     res.json({

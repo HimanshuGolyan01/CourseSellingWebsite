@@ -10,13 +10,17 @@ const AdminHome = () => {
       
       <div className="w-64 bg-gray-400 text-white flex flex-col p-4">
         <h2 className="text-2xl font-bold mb-6">Admin Menu</h2>
-        <button className="w-full text-left px-4 py-2 mb-2 bg-black hover:bg-gray-600 rounded-lg">
+        <button className="w-full text-left px-4 py-2 mb-2 bg-black hover:bg-gray-600 rounded-lg"
+        onClick={() =>  Navigate("/AdminHome")}>
           Home
         </button>
-        <button className="w-full text-left px-4 py-2 mb-2 bg-black hover:bg-gray-600 rounded-lg">
+        <button className="w-full text-left px-4 py-2 mb-2 bg-black hover:bg-gray-600 rounded-lg"
+        onClick={() =>  Navigate('/Dashboard')}>
+
           Dashboard
         </button>
-        <button className="w-full text-left px-4 py-2 bg-black hover:bg-gray-600 rounded-lg">
+        <button className="w-fu9ll text-left px-4 py-2 bg-black hover:bg-gray-600 rounded-lg"
+        onClick={() => Navigate("/MyCourses")}>
           My Courses
         </button>
       </div>
