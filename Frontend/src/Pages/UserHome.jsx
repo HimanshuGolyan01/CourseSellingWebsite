@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import MyCoursesCard from '../Components/MyCoursesCard';
+import AllCourseCard from '../Components/AllCourseCard';
 import { useNavigate } from 'react-router-dom';
 
 const UserHome = () => {
@@ -40,7 +40,7 @@ const UserHome = () => {
         <hr className="border-t border-gray-300 w-full mb-4" />  
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {courses && courses.map((item, index) => (
-            <MyCoursesCard
+            <AllCourseCard
               key={index}
               title={item.title}
               description={item.description}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MyCoursesCard = ({ imageUrl, title, description, price , label}) => {
+const AllCourseCard = ({ imageUrl, title, description, price , label}) => {
     return (
       <div> 
         <div className="bg-gray-200 shadow-xl hover:shadow-2xl transition-shadow rounded-lg overflow-hidden p-4">
@@ -19,10 +19,13 @@ const MyCoursesCard = ({ imageUrl, title, description, price , label}) => {
                 <div className="flex justify-between items-center mt-4">
                     <span className="text-lg font-semibold text-blue-600">₹{price}</span>
                 </div>
+                <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">
+                    Buy Course
+                </button>
             </div>
         </div>
         </div>
     );
 };
 
-export default MyCoursesCard;
+export default AllCourseCard;

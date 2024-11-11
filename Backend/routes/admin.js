@@ -102,7 +102,7 @@ router.post("/course", adminMiddleware, async function(req, res) {
 });
 
 
-router.get("/course/bulk", adminMiddleware,async function(req, res) {
+router.get("/mycourse", adminMiddleware,async function(req, res) {
     const adminId = req.userId;
 
     const courses = await Course.find({
@@ -114,5 +114,7 @@ router.get("/course/bulk", adminMiddleware,async function(req, res) {
         courses
     })
 })
+
+//this api was throwing all courses
 
 module.exports = router;

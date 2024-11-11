@@ -4,7 +4,7 @@ const purchase = require("../models/purchases")
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const userMiddleware = require("../Middleware/user");
-
+const adminMiddleware = require("../Middleware/admin")
 
 
 
@@ -25,7 +25,7 @@ router.get("/purchase" ,userMiddleware, async function(req , res) {
 
 //to preview course
 
-router.get("/preview" , async function( req , res) {
+router.get("/preview"  , async function( req , res) {
     const courses = await course.find({});
 
     res.json({

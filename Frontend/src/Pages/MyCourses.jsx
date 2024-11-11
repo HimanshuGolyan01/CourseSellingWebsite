@@ -8,7 +8,7 @@ const MyCourses = () => {
     useEffect(() => {
         const fetchMyCourses = async () => {
             try {
-                const response = await axios.get("http://localhost:3000/api/v1/admin/course/bulk", {
+                const response = await axios.get("http://localhost:3000/api/v1/admin/mycourse", {
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": "Bearer " + localStorage.getItem("token")
@@ -29,15 +29,15 @@ const MyCourses = () => {
             {courses.length > 0 ? (
                 courses.map(course => (
                     <MyCoursesCard 
-                        key={course._id} // Ensure each card has a unique key
-                        imageUrl={course.imageUrl} // Assuming imageUrl is a field in your course
-                        title={course.title} // Assuming title is a field in your course
-                        description={course.description} // Assuming description is a field in your course
-                        price={course.price} // Assuming price is a field in your course
+                        key={course._id} 
+                        imageUrl={course.imageUrl} 
+                        title={course.title} 
+                        description={course.description} 
+                        price={course.price} 
                     />
                 ))
             ) : (
-                <p>No courses found.</p> // Message if no courses are returned
+                <p>No courses found.</p> 
             )}
         </div>
     );
